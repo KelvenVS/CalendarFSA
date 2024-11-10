@@ -24,9 +24,16 @@ class LoginActivity : AppCompatActivity() {
             val username = usernameEditText.text.toString()
             val password = passwordEditText.text.toString()
 
-            if (validateLogin(username, password)) {
-                // Inicia a próxima atividade caso o login seja bem-sucedido
-                startActivity(Intent(this, DailyClassesActivity::class.java))
+            // Validar login e obter o ID do usuário
+            val userDao = UserDao(this)
+            val user = userDao.getUser(username, password)
+
+            if (user != null) {
+                // Inicia a próxima atividade com o ID do usuário caso o login seja bem-sucedido
+                val intent = Intent(this, DailyClassesActivity::class.java).apply {
+                    putExtra("userId", user.id)
+                }
+                startActivity(intent)
                 finish()
             } else {
                 Toast.makeText(this, getString(R.string.login_error), Toast.LENGTH_SHORT).show()
@@ -34,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         forgotPasswordText.setOnClickListener {
-            // Aqui, você poderia direcionar para a tela de recuperação de senha
+            // Direcionar para a tela de recuperação de senha
             startActivity(Intent(this, PasswordRecoveryActivity::class.java))
         }
 
@@ -45,13 +52,5 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, RegistrationActivity::class.java)
             startActivity(intent)
         }
-
     }
-
-    private fun validateLogin(username: String, password: String): Boolean {
-        val userDao = UserDao(this)
-        val user = userDao.getUser(username, password)
-        return user != null
-    }
-
 }

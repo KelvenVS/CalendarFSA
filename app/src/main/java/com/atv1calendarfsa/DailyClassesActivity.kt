@@ -1,28 +1,29 @@
+// DailyClassesActivity.kt
 package com.atv1calendarfsa
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.TextView
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
 class DailyClassesActivity : AppCompatActivity() {
+
+    private var userId: Long = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daily_classes)
 
-        // Referências para os TextViews que exibem as aulas
-        val class1Text: TextView = findViewById(R.id.class1Text)
-        val class2Text: TextView = findViewById(R.id.class2Text)
-        val class3Text: TextView = findViewById(R.id.class3Text)
-        val class4Text: TextView = findViewById(R.id.class4Text)
+        // Recupera o userId da Intent
+        userId = intent.getLongExtra("userId", -1)
 
-        // Simulando as aulas do dia
-        val dailyClasses = listOf("Matemática", "História", "Química", "Física")
-
-        // Atribuindo as aulas aos TextViews
-        class1Text.text = dailyClasses.getOrNull(0) ?: getString(R.string.no_class)
-        class2Text.text = dailyClasses.getOrNull(1) ?: getString(R.string.no_class)
-        class3Text.text = dailyClasses.getOrNull(2) ?: getString(R.string.no_class)
-        class4Text.text = dailyClasses.getOrNull(3) ?: getString(R.string.no_class)
+        // Configura o botão para abrir o perfil do usuário
+        val viewProfileButton: Button = findViewById(R.id.viewProfileButton)
+        viewProfileButton.setOnClickListener {
+            val intent = Intent(this, UserProfileActivity::class.java).apply {
+                putExtra("userId", userId)
+            }
+            startActivity(intent)
+        }
     }
 }

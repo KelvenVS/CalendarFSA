@@ -65,5 +65,36 @@ class UserDao(context: Context) {
         return rowsAffected > 0
     }
 
+
+    // UserDao.kt
+    fun getUserById(id: Long): User? {
+        val db = dbHelper.readableDatabase
+        val cursor: Cursor = db.query(
+            UserTable.TABLE_NAME,
+            null,
+            "${UserTable.COLUMN_ID} = ?",
+            arrayOf(id.toString()),
+            null,
+            null,
+            null
+        )
+
+        return if (cursor.moveToFirst()) {
+            User(
+                id = cursor.getLong(cursor.getColumnIndexOrThrow(UserTable.COLUMN_ID)),
+                username = cursor.getString(cursor.getColumnIndexOrThrow(UserTable.COLUMN_USERNAME)),
+                password = cursor.getString(cursor.getColumnIndexOrThrow(UserTable.COLUMN_PASSWORD)),
+                name = cursor.getString(cursor.getColumnIndexOrThrow(UserTable.COLUMN_NAME)),
+                email = cursor.getString(cursor.getColumnIndexOrThrow(UserTable.COLUMN_EMAIL)),
+                phone = cursor.getString(cursor.getColumnIndexOrThrow(UserTable.COLUMN_PHONE))
+            )
+        } else {
+            null
+        }.also {
+            cursor.close()
+            db.close()
+        }
+    }
+
     // Funções adicionais para update e delete podem ser adicionadas aqui
 }
