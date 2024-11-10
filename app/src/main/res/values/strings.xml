@@ -1,0 +1,46 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    //Login
+    <string name="app_name">CalendarFSA</string>
+    <string name="login_title">Login</string>
+    <string name="username_hint">Nome de Usuário</string>
+    <string name="password_hint">Senha</string>
+    <string name="login_button">Entrar</string>
+    <string name="forgot_password">Esqueceu a senha?</string>
+    <string name="login_error">Usuário ou senha incorretos</string>
+
+    //Passwaord Recovery
+    <string name="password_recovery_title">Recuperar Senha</string>
+    <string name="email_hint">Digite seu email</string>
+    <string name="recover_password_button">Recuperar Senha</string>
+    <string name="password_recovery_success">Instruções de recuperação enviadas para o email.</string>
+    <string name="password_recovery_error">Erro ao enviar instruções. Verifique o email informado.</string>
+
+    //Daily Classes
+    <string name="daily_classes_title">Aulas de Hoje</string>
+    <string name="class_time1">19:30 – 20:30</string>
+    <string name="class_time2">20:30 – 21:30</string>
+    <string name="class_time3">21:30 – 22:30</string>
+    <string name="class_time4">22:30 – 23:30</string>
+    <string name="no_class">Sem Aula</string>
+
+    //Semester Courses
+    <string name="semester_courses_title">Cursos do Semestre</string>
+    <string name="course_placeholder">Curso</string>
+
+    //Profile
+    <string name="user_profile_title">Perfil do Usuário</string>
+    <string name="name_hint">Nome</string>
+    <string name="phone_hint">Telefone</string>
+    <string name="save_button">Salvar</string>
+    <string name="save_success">Perfil atualizado com sucesso!</string>
+
+    //Cadastro
+    <string name="registration_title">Cadastro de Usuário</string>
+    <string name="hint_username">Usuário</string>
+    <string name="hint_password">Senha</string>
+    <string name="hint_name">Nome</string>
+    <string name="hint_phone">Telefone</string>
+    <string name="hint_email">Email</string>
+    <string name="select_course">Selecione o Curso</string>
+    <string name="register_button">Cadastrar</string>
+</resources>

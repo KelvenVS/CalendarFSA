@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/dailyClassesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/daily_classes_title"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"/>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1">
+
+        <!-- Linha para o primeiro horário -->
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/class_time1"
+                android:padding="8dp" />
+            <TextView
+                android:id="@+id/class1Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_class"
+                android:padding="8dp" />
+        </TableRow>
+
+        <!-- Linha para o segundo horário -->
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/class_time2"
+                android:padding="8dp" />
+            <TextView
+                android:id="@+id/class2Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_class"
+                android:padding="8dp" />
+        </TableRow>
+
+        <!-- Linha para o terceiro horário -->
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/class_time3"
+                android:padding="8dp" />
+            <TextView
+                android:id="@+id/class3Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_class"
+                android:padding="8dp" />
+        </TableRow>
+
+        <!-- Linha para o quarto horário -->
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/class_time4"
+                android:padding="8dp" />
+            <TextView
+                android:id="@+id/class4Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_class"
+                android:padding="8dp" />
+        </TableRow>
+
+    </TableLayout>
+</LinearLayout>
