@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.atv1calendarfsa.dao.UserDao
 
 class LoginActivity : AppCompatActivity() {
 
@@ -48,9 +49,9 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun validateLogin(username: String, password: String): Boolean {
-        // Simulando uma validação de login, que você pode substituir por um banco de dados local
-        return username == "usuario" && password == "senha123"
+        val userDao = UserDao(this)
+        val user = userDao.getUser(username, password)
+        return user != null
     }
-
 
 }

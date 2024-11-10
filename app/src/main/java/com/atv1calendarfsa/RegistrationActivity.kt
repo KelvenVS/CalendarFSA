@@ -7,6 +7,8 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.atv1calendarfsa.dao.UserDao
+import com.atv1calendarfsa.model.User
 
 class RegistrationActivity : AppCompatActivity() {
 
@@ -39,8 +41,12 @@ class RegistrationActivity : AppCompatActivity() {
             val selectedCourse = courseSpinner.selectedItem.toString()
 
             if (username.isNotEmpty() && password.isNotEmpty() && name.isNotEmpty() && phone.isNotEmpty() && email.isNotEmpty()) {
-                // Simular salvamento dos dados
+                val user = User(username = username, password = password, name = name, email = email, phone = phone)
+                val userDao = UserDao(this)
+                userDao.insertUser(user)
+
                 Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show()
+
                 // Limpar os campos após o cadastro
                 usernameEditText.text.clear()
                 passwordEditText.text.clear()
