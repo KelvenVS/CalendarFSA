@@ -50,5 +50,20 @@ class UserDao(context: Context) {
         }
     }
 
+    fun updatePassword(email: String, newPassword: String): Boolean {
+        val db = dbHelper.writableDatabase
+        val values = ContentValues().apply {
+            put(UserTable.COLUMN_PASSWORD, newPassword)
+        }
+        val rowsAffected = db.update(
+            UserTable.TABLE_NAME,
+            values,
+            "${UserTable.COLUMN_EMAIL} = ?",
+            arrayOf(email)
+        )
+        db.close()
+        return rowsAffected > 0
+    }
+
     // Funções adicionais para update e delete podem ser adicionadas aqui
 }
