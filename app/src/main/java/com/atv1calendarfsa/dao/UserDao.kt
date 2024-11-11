@@ -94,6 +94,22 @@ class UserDao(context: Context) {
             cursor.close()
             db.close()
         }
+
+    }
+
+    fun updateName(id: Long, newName: String): Boolean {
+        val db = dbHelper.writableDatabase
+        val values = ContentValues().apply {
+            put(UserTable.COLUMN_NAME, newName)
+        }
+        val rowsAffected = db.update(
+            UserTable.TABLE_NAME,
+            values,
+            "${UserTable.COLUMN_ID} = ?",
+            arrayOf(id.toString())
+        )
+        db.close()
+        return rowsAffected > 0
     }
 
     // Funções adicionais para update e delete podem ser adicionadas aqui
