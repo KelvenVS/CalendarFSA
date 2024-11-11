@@ -40,6 +40,8 @@ class UserProfileActivity : AppCompatActivity() {
 
         saveButton.setOnClickListener {
             updateUserName(userId)
+            updateEmail(userId)
+            updatePhone(userId)
         }
     }
 
@@ -68,9 +70,43 @@ class UserProfileActivity : AppCompatActivity() {
         val success = userDao.updateName(userId, newName)
 
         if (success) {
-            Toast.makeText(this, "Nome atualizado com sucesso!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Dados atualizado com sucesso!", Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(this, "Falha ao atualizar o nome", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun updateEmail(userId: Long) {
+        if (userId == -1L) {
+            Toast.makeText(this, "Erro ao atualizar perfil do usuário", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val newEmail = emailEditText.text.toString()
+        val userDao = UserDao(this)
+        val success = userDao.updateEmail(userId, newEmail)
+
+        if (success) {
+            Toast.makeText(this, "Dados atualizado com sucesso!", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "Falha ao atualizar o email", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun updatePhone(userId: Long) {
+        if (userId == -1L) {
+            Toast.makeText(this, "Erro ao atualizar perfil do usuário", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val newPhone = phoneEditText.text.toString()
+        val userDao = UserDao(this)
+        val success = userDao.updatePhone(userId, newPhone)
+
+        if (success) {
+            Toast.makeText(this, "Dados atualizado com sucesso!", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "Falha ao atualizar o Telefone", Toast.LENGTH_SHORT).show()
         }
     }
 }
