@@ -21,7 +21,10 @@
     <string name="class_time2">20:30 – 21:30</string>
     <string name="class_time3">21:30 – 22:30</string>
     <string name="class_time4">22:30 – 23:30</string>
-    <string name="no_class">Sem Aula</string>
+    <string name="class1">Cálculo</string>
+    <string name="class2">Estudos Sociais</string>
+    <string name="class3">Ciências Moleculares</string>
+    <string name="class4">Mecânica</string>
 
     //Semester Courses
     <string name="semester_courses_title">Cursos do Semestre</string>
