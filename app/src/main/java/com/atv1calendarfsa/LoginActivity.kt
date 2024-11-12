@@ -2,12 +2,17 @@ package com.atv1calendarfsa
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.atv1calendarfsa.dao.UserDao
+
+//Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 
 class LoginActivity : AppCompatActivity() {
 
@@ -19,6 +24,15 @@ class LoginActivity : AppCompatActivity() {
         val passwordEditText: EditText = findViewById(R.id.passwordEditText)
         val loginButton: Button = findViewById(R.id.loginButton)
         val forgotPasswordText: TextView = findViewById(R.id.forgotPasswordText)
+
+        //Fragment
+        val fragmentManager: FragmentManager = supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        val logoFragment = LogoFragment()
+        fragmentTransaction.add(R.id.logo_fragment_container, logoFragment)
+        fragmentTransaction.commit()
+        // Adicionando logs para verificar o ciclo de vida da Activity
+        Log.d("LoginActivity", "onCreate chamado")
 
         loginButton.setOnClickListener {
             val username = usernameEditText.text.toString()

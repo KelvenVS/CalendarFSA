@@ -2,12 +2,17 @@
 package com.atv1calendarfsa
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.EditText
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.atv1calendarfsa.dao.UserDao
 import com.atv1calendarfsa.model.User
+
+//Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 
 class UserProfileActivity : AppCompatActivity() {
 
@@ -21,6 +26,15 @@ class UserProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile)
+
+        //Fragment
+        val fragmentManager: FragmentManager = supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        val logoFragment = LogoFragment()
+        fragmentTransaction.add(R.id.logo_fragment_container, logoFragment)
+        fragmentTransaction.commit()
+        // Adicionando logs para verificar o ciclo de vida da Activity
+        Log.d("LoginActivity", "onCreate chamado")
 
         // Referências aos campos de texto
         nameEditText = findViewById(R.id.nameEditText)
